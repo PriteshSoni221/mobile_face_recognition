@@ -352,24 +352,26 @@ class FaceRecognitionSystem:
             embedding = nn.functional.normalize(embedding, p=2, dim=1)
             return embedding.cpu().numpy().flatten()
 
-    def register_user(self, user_id: str, name: str, image_path: str) -> bool:
+    def register_user(self, name: str, image_path: str) -> bool:
         """
         Register a new user with face template
 
         Args:
-            user_id: Unique identifier for the user
             name: User's name
             image_path: Path to user's face image
 
         Returns:
             True if registration successful, False otherwise
         """
+        # Dynamically generate user_id
+        user_id = str(len(self.face_database) + 1)
         print(f"Registering user: {name} (ID: {user_id})")
 
-        # Check if user already exists
-        if user_id in self.face_database:
-            print(f"User {user_id} already exists!")
-            return False
+        # Check if user already exists by name
+        for data in self.face_database.values():
+            if data['name'] == name:
+                print(f"User with name '{name}' already exists!")
+                return False
 
         # Preprocess image
         preprocessed_img = self.preprocess_image(image_path)
@@ -389,8 +391,8 @@ class FaceRecognitionSystem:
         # Save to file
         self._save_database()
 
-        print(f"User {name} registered successfully!")
-        return True
+        print(f"User {name} registered successfully with id {user_id}!")
+        return user_id
 
     def match_face(self, image_path: str, threshold: float = 0.3) -> Tuple[Optional[str], Optional[str], float]:
         """
