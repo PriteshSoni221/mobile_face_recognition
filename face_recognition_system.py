@@ -7,7 +7,6 @@ import numpy as np
 import json
 import os
 from typing import Dict, Tuple, Optional
-# import cv2
 
 
 class ConvBNReLU(nn.Module):
