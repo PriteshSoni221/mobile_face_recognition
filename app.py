@@ -7,9 +7,9 @@ fr_system = FaceRecognitionSystem()
 if fr_system.test_model():
     print("Model test passed successfully.")
     # Register users
-    fr_system.register_user("user001", "Pritesh", "data/prit_sample1.jpeg")
+    fr_system.register_user("Pritesh", "data/prit_sample1.jpeg")
     fr_system.register_user(
-        "user002", "Chris", "data/chris_hemsworth_sample1.jpeg")
+        "Chris", "data/chris_hemsworth_sample1.jpg")
 
     # Match a face
     user_id, name, similarity = fr_system.match_face(
