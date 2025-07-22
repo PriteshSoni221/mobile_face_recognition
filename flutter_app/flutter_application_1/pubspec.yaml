@@ -1,0 +1,51 @@
+name: flutter_application_1
+description: Flutter face recognition app using ONNX
+
+publish_to: "none"
+version: 1.0.0+1
+
+environment:
+  sdk: ">=3.0.0 <4.0.0"
+  flutter: ">=3.10.0"
+
+dependencies:
+  flutter:
+    sdk: flutter
+
+  # Camera and ML
+  camera: ^0.10.5+5
+  google_ml_kit: ^0.16.3
+
+  # ONNX Runtime
+  onnxruntime: ^1.4.1
+
+  # Database
+  sqflite: ^2.3.0
+
+  # File handling
+  path_provider: ^2.1.1
+  path: ^1.8.3
+
+  # Image processing
+  image: ^4.1.3
+
+  # Permissions
+  permission_handler: ^11.0.1
+
+  # State management
+  provider: ^6.0.5
+
+  # UI
+  cupertino_icons: ^1.0.6
+
+dev_dependencies:
+  flutter_test:
+    sdk: flutter
+  flutter_lints: ^3.0.0
+
+flutter:
+  uses-material-design: true
+
+  assets:
+    - assets/models/
+    - assets/images/
