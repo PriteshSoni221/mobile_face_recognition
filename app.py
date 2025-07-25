@@ -6,6 +6,7 @@ fr_system = FaceRecognitionSystem()
 
 if fr_system.test_model():
     print("Model test passed successfully.")
+    
     # Register users
     fr_system.register_user("Pritesh", "data/prit_sample1.jpeg")
     fr_system.register_user(
